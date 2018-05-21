@@ -1,0 +1,17 @@
+.barre{
+    width: 30px;
+    background: red;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 400px;
+    margin-left: 15px;
+}
+
+.barre__container{
+    width: 27px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 250px;
+    margin: 60px auto;
+
+}

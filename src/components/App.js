@@ -3,6 +3,7 @@ import PokeList from "./PokeList";
 import DetailView from "./DetailView";
 import Pokemon from "../Pokemon";
 import Button from "./Button";
+import Barre from "./Barre";
 import "./styles/App.css";
 
 
@@ -29,10 +30,10 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Button />
-        <PokeList handleOnClick = {this.handleOnClick} />
+      <PokeList handleOnClick = {this.handleOnClick} />
+      <Barre />
         <DetailView pokemon = {this.state.pokemon} />
-      </div>
+        </div>
     );
   }
 }

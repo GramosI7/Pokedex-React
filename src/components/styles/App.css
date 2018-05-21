@@ -37,6 +37,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Avenir Next', sans-serif;
+  background-image: url("../../img/pokemonBackground.png")
 }
 
 
@@ -54,9 +55,10 @@ p {
   justify-content: center;
   width: 650px;
   height: 400px;
+  background: #f53b57;
   padding-left: 10px;
   margin: 50px auto;
-  background-color: #FE0065;
   border-radius: 10px;
+  border-top-right-radius: 80px;
   box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22), 0 18px 45px rgba(0, 0, 0, 0.22);
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from "./Button";
+import Search from "./Search";
 import "./styles/DetailView.css";
 
 const DetailView = ({pokemon}) => {
@@ -6,7 +8,9 @@ const DetailView = ({pokemon}) => {
 
     return (
         <section className="detail-view">
+        <Button />
         <img src={sprite} className='sprite-image' alt="sprite"/>
+        <Search />
         <div className='data-wrapper'>
           <h1 className='data-name'>{name}</h1>
           <hr/>
