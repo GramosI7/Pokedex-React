@@ -1,16 +1,23 @@
 import React from 'react';
 import PokeCell from './PokeCell';
-import { PokeClasses } from '../PokeClasses';
+import { pokeClasses } from '../pokeClasses';
 import './styles/PokeList.css';
 
-const PokeList = () => {
-    const cells = pokeClasses.map(pokeClass => <PokeCell pokeClass={pokeClass} />)
-  return (
-    <section className="poke-list">
-        <PokeCell />
-        <PokeCell />
-        <PokeCell />
-    </section>
+const PokeList = ({handleOnClick}) => {
+    const cells = pokeClasses.map(pokeClass => {
+        return (
+          <PokeCell 
+            key={pokeClass.id} 
+            pokeClass={pokeClass} 
+            handleOnClick = {handleOnClick} 
+          />
+        );
+      });
+    
+      return (
+        <section className="poke-list">
+          {cells}
+        </section>
   )
 }
 

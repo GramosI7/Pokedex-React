@@ -604,3 +604,4 @@ export const pokeClasses = [
       backgroundPosition: "-18820px 0",
     }
   ];
+
