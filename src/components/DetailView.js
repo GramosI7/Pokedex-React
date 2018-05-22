@@ -5,6 +5,7 @@ import "./styles/DetailView.css";
 
 const DetailView = ({pokemon}) => {
     const { id, name, sprite, type } = pokemon;
+    console.log(pokemon)
 
     return (
         <section className="detail-view">

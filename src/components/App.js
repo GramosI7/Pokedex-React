@@ -4,10 +4,13 @@ import DetailView from "./DetailView";
 import Pokemon from "../Pokemon";
 import Button from "./Button";
 import Barre from "./Barre";
+import Search from "./Search";
+
 import "./styles/App.css";
 
 
 class App extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -15,6 +18,7 @@ class App extends Component {
     };
     this.handleOnClick = this.handleOnClick.bind(this);
   }
+
 
   handleOnClick(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -32,6 +36,7 @@ class App extends Component {
       <div className="App">
       <PokeList handleOnClick = {this.handleOnClick} />
       <Barre />
+
         <DetailView pokemon = {this.state.pokemon} />
         </div>
     );

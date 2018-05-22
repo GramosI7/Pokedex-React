@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import PokeList from "./PokeList";
+import DetailView from "./DetailView";
+import Pokemon from "../Pokemon";
+import Button from "./Button";
+import Barre from "./Barre";
 import "./styles/Search.css";
 
 
@@ -8,33 +13,37 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            input: ""
+            userInput: ""
         };
       }
 
-    inputSearch(event){
+      onChange(event) {
         this.setState({
-            input : event.target.value
+            userInput : event.target.value
         }
+        //  ,() => console.log(this.state.userInput)
       )
     }
 
-    addTodo(event){
+    onClick(event) {
         event.preventDefault();
-        this.setState({
-            userInput: "",
-            items : [...this.state.items, this.state.userInput]
-        }
-        // , () => console.log(this.state)
-    );
-    }
+        fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.userInput}/`)
+          .then(res => res.json())
+          .then(data => {
+            const pokemon = new Pokemon(data);
+            console.log(this.state.userInput);
+            this.setState({pokemon});
+          })
+          .catch(err => console.log(err));  
+      }
+  
 
     render(){
         return (
             <div className="container-search">
             <form action="">
-            <input value={this.state.input} inputSearch={this.inputSearch.bind(this)} className="search" type="text" placeholder="Search your Pokemon"/>
-            <button className="btn-primary" onClick={this.addTodo.bind(this)}>Ajouter</button>
+            <input value={this.state.userInput} onChange = {this.onChange.bind(this)} className="search" type="text" placeholder="Search your Pokemon"/>
+            <button onClick ={this.onClick.bind(this)} className="btn">Ajouter</button>
             </form>
             </div> 
         )
