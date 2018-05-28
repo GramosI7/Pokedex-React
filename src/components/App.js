@@ -14,9 +14,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      pokemon: {}
+      pokemon: {},
+      userInput: ""
     };
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.onClickPokemon = this.onClickPokemon.bind(this);
+    this.onChangePokemon = this.onChangePokemon.bind(this);
   }
 
 
@@ -27,17 +30,42 @@ class App extends Component {
         const pokemon = new Pokemon(data);
 
         this.setState({pokemon});
+        // console.log(this.state.pokemon)
       })
       .catch(err => console.log(err));
   }
+
+//function for search
+onClickPokemon(event) {
+  event.preventDefault();
+  fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.userInput}/`)
+    .then(res => res.json())
+    .then(data => {
+      const pokemon = new Pokemon(data);
+      this.setState({pokemon});
+      console.log(this.state.pokemon)
+    })
+    .catch(err => console.log(err));  
+}
+
+onChangePokemon(event) {
+  this.setState({
+      userInput : event.target.value
+  }
+   ,() => console.log(this.state.userInput)
+)
+}
+
+  
 
   render(){
     return (
       <div className="App">
       <PokeList handleOnClick = {this.handleOnClick} />
       <Barre />
-
-        <DetailView pokemon = {this.state.pokemon} />
+        <DetailView pokemon = {this.state.pokemon}
+        onClickPokemon = {this.onClickPokemon}
+        onChangePokemon = {this.onChangePokemon} />
         </div>
     );
   }

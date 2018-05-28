@@ -3,15 +3,18 @@ import Button from "./Button";
 import Search from "./Search";
 import "./styles/DetailView.css";
 
-const DetailView = ({pokemon}) => {
+const DetailView = ({pokemon, onClickPokemon, onChangePokemon}) => {
     const { id, name, sprite, type } = pokemon;
-    console.log(pokemon)
+
 
     return (
         <section className="detail-view">
         <Button />
         <img src={sprite} className='sprite-image' alt="sprite"/>
-        <Search />
+        <Search pokemon={pokemon}
+        onClickPokemon = {onClickPokemon}
+        onChangePokemon = {onChangePokemon}
+        />
         <div className='data-wrapper'>
           <h1 className='data-name'>{name}</h1>
           <hr/>
